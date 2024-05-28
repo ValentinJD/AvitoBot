@@ -1,0 +1,13 @@
+spring:
+  security:
+    oauth2:
+      client:
+        registration:
+          providerid:
+            authorization-grant-type: client_credentials
+            client-id: CtQF68Zjm3Sr_4wyUsKv
+            client-secret: yms1O5Ox5o7TBsKnPmXOpajKbbiEuKtq0UvJEgn8
+        provider:
+          providerid:
+            token-uri: https://api.avito.ru/token
+            user-info-authentication-method: header
