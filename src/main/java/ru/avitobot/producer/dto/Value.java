@@ -7,9 +7,8 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class Chat {
+public class Value {
     private String id;
-    private Long created;
-    private Long updated;
-    private Context context;
+    private String title;
+    private String price_string;
 }
