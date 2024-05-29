@@ -6,35 +6,30 @@ import org.telegram.telegrambots.meta.api.objects.Chat;
 import org.telegram.telegrambots.meta.api.objects.User;
 import org.telegram.telegrambots.meta.bots.AbsSender;
 import ru.avitobot.producer.bot.Utils;
-import ru.avitobot.producer.dto.MessageDto;
-import ru.avitobot.producer.http.AvitoWebClient;
+import ru.avitobot.producer.service.GetChatsService;
 
-import java.util.List;
 
 @Slf4j
 @Component
 public class GetChatsCommand extends ServiceCommand {
 
-    private final AvitoWebClient avitoWebClient;
+    private final GetChatsService getChatsService;
 
-    public GetChatsCommand(String identifier, String description, AvitoWebClient avitoWebClient) {
+    public GetChatsCommand(String identifier, String description, GetChatsService getChatsService) {
         super(identifier, description);
-        this.avitoWebClient = avitoWebClient;
+        this.getChatsService = getChatsService;
     }
 
     @Override
     public void execute(AbsSender absSender, User user, Chat chat, String[] strings) {
         String userName = Utils.getUserName(user);
         String textMessage = "Имеются следующие чаты: %s";
-        List<ru.avitobot.producer.dto.Chat> chats1 = avitoWebClient.start().getChats();
-        ru.avitobot.producer.dto.Chat chat1 = chats1.get(0);
+        ru.avitobot.producer.dto.Chat chat1 = getChatsService.getChats().get(0);
         String chats =
-              "Id =" + chat1.getId() +
-                     "Title" +  chat1.getContext().getValue().getTitle() +
-                 "Price" +       chat1.getContext().getValue().getPrice_string()
-                ;
+                "Id =" + chat1.getId() +
+                        "Title" + chat1.getContext().getValue().getTitle() +
+                        "Price" + chat1.getContext().getValue().getPrice_string();
         String message = String.format(textMessage, chats).replace("&nbsp;", " ");
-
         sendMessageLogged(absSender, chat, userName, message);
     }
 

@@ -30,18 +30,6 @@ public class AvitoWebClient {
                 .toEntity(MessageDto.class);
     }
 
-    public Mono<ResponseEntity<MessageDto>> getTest(long userId) {
-        WebClient webClient = WebClient.builder()
-                .baseUrl("http://127.0.0.1:8081")
-                .build();
-        return webClient
-                .get()
-                .uri("/test")
-                .retrieve()
-                .toEntity(MessageDto.class);
-    }
-
-//    @Scheduled(fixedDelay = 5000)
     public MessageDto start() {
         MessageDto s = getMessages(12542761)
                 .block()
