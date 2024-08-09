@@ -23,10 +23,12 @@ public class GetChatsCommand extends ServiceCommand {
     @Override
     public void execute(AbsSender absSender, User user, Chat chat, String[] strings) {
         String userName = Utils.getUserName(user);
-        String textMessage = "Имеются следующие чаты: %s";
+        String textMessage = "Имеются следующие чаты:\n %s";
         ru.avitobot.producer.dto.Chat chat1 = getChatsService.getChats().get(0);
-        String chats = "Title: " + chat1.getContext().getValue().getTitle() +
-                        "Price: " + chat1.getContext().getValue().getPrice_string();
+        String chats = "Описание: " + chat1.getContext().getValue().getTitle() + "\n" +
+                "Цена: " + chat1.getContext().getValue().getPrice_string() + "\n" +
+                "Ссылка: " + chat1.getContext().getValue().getUrl() + "\n" +
+                "Город: " + chat1.getContext().getValue().getLocation().getTitle() + "\n";
         String message = String.format(textMessage, chats).replace("&nbsp;", " ");
         sendMessageLogged(absSender, chat, userName, message);
     }

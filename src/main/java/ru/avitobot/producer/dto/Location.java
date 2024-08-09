@@ -7,10 +7,8 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class Value {
-    private String id;
+public class Location {
     private String title;
-    private String price_string;
-    private String url;
-    private Location location;
+    private String lat;
+    private String lon;
 }
