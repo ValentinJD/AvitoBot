@@ -25,10 +25,8 @@ public class GetChatsCommand extends ServiceCommand {
         String userName = Utils.getUserName(user);
         String textMessage = "Имеются следующие чаты: %s";
         ru.avitobot.producer.dto.Chat chat1 = getChatsService.getChats().get(0);
-        String chats =
-                "Id =" + chat1.getId() +
-                        "Title" + chat1.getContext().getValue().getTitle() +
-                        "Price" + chat1.getContext().getValue().getPrice_string();
+        String chats = "Title: " + chat1.getContext().getValue().getTitle() +
+                        "Price: " + chat1.getContext().getValue().getPrice_string();
         String message = String.format(textMessage, chats).replace("&nbsp;", " ");
         sendMessageLogged(absSender, chat, userName, message);
     }

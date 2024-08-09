@@ -24,7 +24,7 @@ public class AvitoWebClient {
                 .get()
                 .uri("/messenger/v2/accounts/" + userId+"/chats")
                 .header("Authorization",
-                        "Bearer d3tQAq5WTg2OB6ifzh1crgtBfEs-wM8HQkYArTDp")
+                        "Bearer PZ1mQywfSLaBTVP5tTfjcgq-UPT-VzDtKFxT71-U")
                 .header("Cookie", "srv_id=lsDmD9tnO20-BABU.6zdzpcsktYg8su8VQQ61lawI-Z1QT1wa43OKgjuRHvayVPWq4bS40UcTdMuCBVgAEnQb.VyNUZPYMDl8vTWIGIbGb0FwDCUmd1rSPNPoOrwOG3Kk=.web")
                 .retrieve()
                 .toEntity(MessageDto.class);

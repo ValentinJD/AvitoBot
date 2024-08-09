@@ -4,7 +4,6 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.telegram.telegrambots.extensions.bots.commandbot.commands.BotCommand;
 import org.telegram.telegrambots.meta.api.methods.send.SendMessage;
-import org.telegram.telegrambots.meta.api.objects.Chat;
 import org.telegram.telegrambots.meta.bots.AbsSender;
 import org.telegram.telegrambots.meta.exceptions.TelegramApiException;
 
@@ -23,7 +22,7 @@ abstract class ServiceCommand extends BotCommand {
      */
     void sendAnswer(AbsSender absSender, Long chatId, String commandName, String userName, String text) {
         SendMessage message = new SendMessage();
-        message.enableMarkdown(true);
+        message.enableMarkdown(false);
         message.setChatId(chatId.toString());
         message.setText(text);
         try {
